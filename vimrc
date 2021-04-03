@@ -1,39 +1,6 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
-Plugin 'gmarik/Vundle.vim'
-
-Plugin 'scrooloose/nerdtree'
-
-" Status line stuff
-Plugin 'itchyny/lightline.vim'
-Plugin 'itchyny/vim-gitbranch'
-
-" Git stuff
-Plugin 'tpope/vim-fugitive.git'
-
-" Tag stuff
-Plugin 'majutsushi/tagbar'
-Plugin 'ludovicchabant/vim-gutentags'
-
-" Color stuff
-" Plugin 'nightsense/snow'
-" Plugin 'jeffkreeftmeijer/vim-dim'
-" Plugin 'noahfrederick/vim-noctu'
-Plugin 'mmzeeman/vim-hexac'
-Plugin 'mmzeeman/nofrils'
-" Plugin 'mmzeeman/vim-hexmin'
-" Plugin 'robertmeta/nofrils'
-
-" Try out vimwiki 
-Plugin 'vimwiki/vimwiki'
-
-call vundle#end()            " required
-
 filetype plugin indent on    " required
 
 " vimwiki/vimwiki
@@ -56,17 +23,10 @@ if has("gui_running")
     :set guifont=PragmataPro\ Mono\ Liga:h11
     colorscheme snow
 else
-    " Uses the 16 color ansi scheme
-    " colorscheme dim
-    
     set background=light
     " set background=dark
+    
     colorscheme nofrils-light
-
-    " hi Normal ctermbg=NONE
-    " hi nonText ctermbg=NONE
-
-    " colorscheme hexmin 
 endif
 
 syntax enable
