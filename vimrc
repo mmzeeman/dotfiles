@@ -31,7 +31,8 @@ endif
 
 syntax enable
 
-let g:NERDTreeNodeDelimiter = "\u00a0"
+" let g:NERDTreeNodeDelimiter = "\u00a0"
+let g:NERDTreeHighlightCursorline = 0
 
 set expandtab
 set shiftwidth=4
