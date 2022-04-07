@@ -21,3 +21,9 @@ git clone --depth 1 https://github.com/majutsushi/tagbar vim-packages/tagbar
 git clone --depth 1 https://github.com/ludovicchabant/vim-gutentags vim-packages/vim-gutentags
 
 
+# PlantUML
+git clone --depth 1 https://github.com/aklt/plantuml-syntax vim-packages/plantuml-syntax
+git clone --depth 1 https://github.com/tyru/open-browser.vim.git vim-packages/open-browser.vim.git
+git clone --depth 1 https://github.com/weirongxu/plantuml-previewer.vim.git vim-packages/plantuml-previewer.vim.git
+
+

@@ -1,0 +1,8 @@
+{
+    "esversion": 6,
+    "undef": true,
+    "unused": true,
+    "eqeqeq": true,
+
+    "globals": {"navigator": true, "window": true, "document": true}
+}
