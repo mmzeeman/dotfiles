@@ -6,28 +6,13 @@ filetype plugin indent on    " required
 " vimwiki/vimwiki
 let g:vimwiki_list = [{'path': '~/Dropbox/wiki/', 'syntax': 'markdown', 'ext': '.md'}]
 
-" Workaround for vim bug on terminals which don't support background color
-" erase
+" Workaround for vim bug on terminals which don't support background color erase
 let &t_ut=''
 
-" set Vim-specific sequences for RGB colors
-if has("termguicolors")
-    set termguicolors
-endif
+set background=light
+" set background=dark
 
-if has("gui_running")
-    if has("gui_macvim")
-        :set macligatures
-    endif
-
-    :set guifont=PragmataPro\ Mono\ Liga:h11
-    colorscheme snow
-else
-    set background=light
-    " set background=dark
-    
-    colorscheme nofrils-light
-endif
+colorscheme nofrils-light
 
 syntax enable
 
@@ -101,9 +86,3 @@ let g:lightline = {
       \ },
       \ }
 
-
-au FileType plantuml let g:plantuml_previewer#plantuml_jar_path = get(
-    \  matchlist(system('cat `which plantuml` | grep plantuml.jar'), '\v.*\s[''"]?(\S+plantuml\.jar).*'),
-    \  1,
-    \  0
-    \)

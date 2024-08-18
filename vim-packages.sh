@@ -5,7 +5,7 @@ git clone --depth 1 https://github.com/preservim/nerdtree.git vim-packages/nerdt
 git clone --depth 1 https://github.com/vimwiki/vimwiki.git vim-packages/vimwiki
 
 # Personal things
-# git clone --depth 1 https://github.com/mmzeeman/vim-haxac.git vim-packages/vim-hexac
+git clone --depth 1 https://github.com/mmzeeman/vim-haxac.git vim-packages/vim-hexac
 git clone --depth 1 https://github.com/mmzeeman/nofrils.git   vim-packages/nofrils
 
 
