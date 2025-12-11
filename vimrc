@@ -4,16 +4,20 @@ filetype off                  " required
 filetype plugin indent on    " required
 
 " vimwiki/vimwiki
-let g:vimwiki_list = [{'path': '~/Dropbox/wiki/', 'syntax': 'markdown', 'ext': '.md'}]
+" let g:vimwiki_list = [{'path': '~/Dropbox/wiki/', 'syntax': 'markdown', 'ext': '.md'}]
 
 " Workaround for vim bug on terminals which don't support background color erase
-let &t_ut=''
+" let &t_ut=''
 
 set background=light
 " set background=dark
 
-colorscheme nofrils-light
+if has("termguicolors")
+  set termguicolors
+endif
 
+" colorscheme nofrils-light
+colorscheme highlight-zebra-gentle
 syntax enable
 
 " let g:NERDTreeNodeDelimiter = "\u00a0"
@@ -85,4 +89,49 @@ let g:lightline = {
       \   'gitbranch': 'gitbranch#name'
       \ },
       \ }
+
+
+function! ErlangTag()
+    " Get the current line and cursor position
+    let line = getline('.')
+    let col = col('.')
+    
+    " Try to find module:function pattern around cursor
+    let pattern = '\v<\w+:\w+>'
+    let match_start = match(line, pattern)
+    let keyword = ''
+    
+    while match_start != -1
+        let match_end = matchend(line, pattern, match_start)
+        if match_start < col && col <= match_end
+            let keyword = matchstr(line, pattern, match_start)
+            break
+        endif
+        let match_start = match(line, pattern, match_end)
+    endwhile
+    
+    " If no module:function found, get just the word under cursor
+    if empty(keyword)
+        let keyword = expand('<cword>')
+    endif
+    
+    " Parse and jump to tag
+    let parts = split(keyword, ':')
+    if len(parts) == 1
+        execute 'tag' keyword
+    elseif len(parts) == 2
+        let [mod, fun] = parts
+        let i = 1
+        let fun_taglist = taglist('^' . fun . '$')
+        for item in fun_taglist
+           if item.kind == 'f' && item.module == mod
+               silent execute i . 'tag' fnameescape(item.name)
+               break
+           endif
+           let i += 1
+        endfor
+    endif
+endfunction
+
+autocmd FileType erlang nnoremap <buffer> <C-]> :call ErlangTag()<CR>
 
